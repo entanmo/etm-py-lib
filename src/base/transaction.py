@@ -112,7 +112,6 @@ class Transaction:
                     bb.writeString(i)
 
             if assetSize > 0:
-                print(assetBytes)
                 for i in iter(assetBytes):
                     bb.writeByte(i)
 
