@@ -2,6 +2,6 @@
 
 ## Dependency package:
 
-	 ed25519  https://github.com/okready/python-ed25519.git
+	 ed25519  git+https://github.com/okready/python-ed25519.git@publickey-win64-fix
 	 base58
 

@@ -1,3 +1,5 @@
+# -*- encoding: utf-8 -*-
+
 import hashlib
 from binascii import hexlify, unhexlify
 import base58

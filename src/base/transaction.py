@@ -1,3 +1,5 @@
+# -*- encoding: utf-8 -*-
+
 import hashlib
 from binascii import hexlify, unhexlify
 
@@ -47,12 +49,12 @@ class Transaction:
         tr = {
             "type": data["type"],
             "amount": 0,
-            "fee": data["fee"] if "fee" in data else None,
+            "fee": data["fee"] if "fee" in data else 0,
             "timestamp": slots.getTime(),
             "senderPublicKey": _senderPublicKey,
             "asset": {},
-            "args": data["args"] if "args" in data else None,
-            "message": data["message"] if "args" in data else None
+            "args": data["args"] if "args" in data else [],
+            "message": data["message"] if "message" in data else ""
         }
 
         tr = self.o_trsTypes[tr["type"]].create(data, tr)
@@ -76,6 +78,7 @@ class Transaction:
         try:
             assetBytes = self.o_trsTypes[tr["type"]].getBytes(tr)
             assetSize = len(assetBytes) if assetBytes else 0
+            # assetSize = 0
 
             bb = BytesBuffer(size + assetSize, True)
 
@@ -95,6 +98,9 @@ class Transaction:
 
             if "recipientId" in tr:
                 bb.writeString(tr["recipientId"])
+            else:
+                for i in range(8):
+                    bb.writeByte(0)
 
             bb.writeLong(tr["amount"])
 
@@ -103,9 +109,10 @@ class Transaction:
 
             if tr["args"]:
                 for i in tr["args"]:
-                    bb.writeString(tr["args"][i])
+                    bb.writeString(i)
 
             if assetSize > 0:
+                print(assetBytes)
                 for i in iter(assetBytes):
                     bb.writeByte(i)
 

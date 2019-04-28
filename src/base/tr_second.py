@@ -1,8 +1,12 @@
+# -*- encoding: utf-8 -*-
+from binascii import hexlify, unhexlify
+
+
 class Second:
     @staticmethod
     def create(data, tr):
         tr["asset"]["signature"] = {
-            "publicKey": str(data["secondKeypair"]["publicKey"])
+            "publicKey": str(hexlify(data["secondKeypair"]["publicKey"].to_bytes()), encoding="utf-8")
         }
         return tr
 

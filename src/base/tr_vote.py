@@ -1,5 +1,4 @@
-from src.utils.buffer import BytesBuffer
-
+# -*- encoding: utf-8 -*-
 
 class Vote:
     @staticmethod
@@ -17,7 +16,7 @@ class Vote:
 
         buf = bytes()
         try:
-            buf = bytes(tr["asset"]["vote"]["votes"], "utf-8")
+            buf = bytes("".join(tr["asset"]["vote"]["votes"]), "utf-8")
         except:
             raise
 

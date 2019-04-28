@@ -1,3 +1,5 @@
+# -*- encoding: utf-8 -*-
+
 class Transfer:
     @staticmethod
     def create(data, tr):

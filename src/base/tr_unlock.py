@@ -1,3 +1,5 @@
+# -*- encoding: utf-8 -*-
+
 class Unlock:
     @staticmethod
     def create(data, tr):
