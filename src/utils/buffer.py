@@ -6,7 +6,7 @@ import struct
 
 
 class BytesBuffer(object):
-    def __init__(self, capacity, littleEndian):
+    def __init__(self, capacity=1024, littleEndian=True):
         self._data = bytearray(capacity)
         self._capacity = capacity
         self._index = 0

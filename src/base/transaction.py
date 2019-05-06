@@ -11,6 +11,12 @@ from src.base.tr_unlock import Unlock
 from src.base.tr_vote import Vote
 from src.base.tr_delay import Delay
 from src.base.tr_second import Second
+from src.base.transactions.tr_uia_issuer import UiaIssuer
+from src.base.transactions.tr_uia_asset import UiaAsset
+from src.base.transactions.tr_uia_flags import UiaFlags
+from src.base.transactions.tr_uia_acl import UiaAcl
+from src.base.transactions.tr_uia_issue import UiaIssue
+from src.base.transactions.tr_uia_transfer import UiaTransfer
 
 from src.utils.ed import Ed
 from src.utils.slots import Slots
@@ -29,7 +35,13 @@ class Transaction:
         102: Unlock(),
         3: Vote(),
         110: Delay(),
-        1: Second()
+        1: Second(),
+        9: UiaIssuer(),
+        10: UiaAsset(),
+        11: UiaFlags(),
+        12: UiaAcl(),
+        13: UiaIssue(),
+        14: UiaTransfer()
     }
 
     def create(self, data):
@@ -96,7 +108,7 @@ class Transaction:
                 for i in iter(requesterPublicKey_buffer):
                     bb.writeByte(i)
 
-            if "recipientId" in tr:
+            if "recipientId" in tr and tr["recipientId"]:
                 bb.writeString(tr["recipientId"])
             else:
                 for i in range(8):
