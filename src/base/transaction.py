@@ -62,7 +62,7 @@ class Transaction:
             "type": data["type"],
             "amount": 0,
             "fee": data["fee"] if "fee" in data else 0,
-            "timestamp": slots.getTime(),
+            "timestamp": data["timestamp"] if "timestamp" in data else slots.getTime(),
             "senderPublicKey": _senderPublicKey,
             "asset": {},
             "args": data["args"] if "args" in data else [],
