@@ -5,7 +5,7 @@ import ed25519
 
 class Ed:
     @staticmethod
-    def MakeKeypair(hash):
+    def MakeKeypair(hash):  # 私钥的返回值与js库的区别是没有拼接公钥，但是签名的实现和结果是一样的
         sk = ed25519.SigningKey(hash)
         vk = sk.get_verifying_key()
 

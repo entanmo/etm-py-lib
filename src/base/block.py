@@ -14,7 +14,7 @@ transactionModule = Transaction()
 
 class Block:
 
-    def create(self, data):
+    def create(self, data):  # 暂时没有实现，需要加入constants和BlockStatus模块
 
         block = {
 
