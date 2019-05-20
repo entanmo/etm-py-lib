@@ -17,7 +17,8 @@ class Second:
 
         buf = bytes()
         try:
-            buf = bytes(tr["asset"]["signature"]["publicKey"], "utf-8")
+            # buf = bytes(tr["asset"]["signature"]["publicKey"], "utf-8")
+            buf =  unhexlify(tr["asset"]["signature"]["publicKey"])
         except:
             raise
 
